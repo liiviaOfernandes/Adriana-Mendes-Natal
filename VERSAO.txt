@@ -1,0 +1,4 @@
+Adriana Mendes — Natal 2026
+Demo estática para GitHub Pages
+Sem banco de dados • dados no localStorage
+Campanha: 20/11/2026 a 06/12/2026

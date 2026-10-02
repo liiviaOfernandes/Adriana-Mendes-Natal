@@ -1,0 +1,7 @@
+(() => {
+ const esc=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+ const data=AMDemo.load(), id=new URLSearchParams(location.search).get('delivery')||'d1', d=data.deliveries.find(x=>x.id===id); const client=d?data.clients.find(c=>c.id===d.clientId):null;
+ if(!d){document.querySelector('#deliveryRoot').innerHTML='<div style="padding:40px">Entrega não encontrada.</div>';return}
+ document.title=`${d.clientName} • Entrega de Natal`;
+ document.querySelector('#deliveryRoot').innerHTML=`<section class="delivery-page"><div class="delivery-photo"><img src="${esc(client?.photo||'assets/img/portfolio-familia-2.jpg')}" alt="Natal"></div><div class="delivery-copy"><img class="logo-small" src="assets/img/logo-adriana.png" alt="Adriana Mendes"><p class="eyebrow" style="color:#d5bda7">ENTREGA DE NATAL • 2026</p><h1>Seu Natal<br>está pronto.</h1><p>${esc(d.message)}</p><div class="delivery-meta"><span>${esc(d.clientName)}</span><span>${AMDemo.dateBR(d.date)}</span><span>Alta resolução</span></div><a class="btn light" style="width:max-content" target="_blank" href="${esc(d.drive)}">Abrir minhas fotografias no Drive</a><div class="delivery-message">Guarde os arquivos em mais de um lugar e faça o download em qualidade original. Obrigada por confiar ao Estúdio Adriana Mendes um pedacinho tão bonito da história de vocês.</div></div></section>`;
+})();
